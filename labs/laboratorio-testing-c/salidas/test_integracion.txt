@@ -3,4 +3,13 @@
   [OK]   total == 1300
   [OK]   con_descuento == 1170
 
---- 2/2 tests OK ---
+[agregar hasta llenar e intentar uno mas]
+  [OK]   carrito_agregar(&c, p1) == 1
+  [OK]   carrito_agregar(&c, p2) == 1
+  [OK]   carrito_agregar(&c, p3) == 1
+  [OK]   carrito_agregar(&c, p4) == 1
+  [OK]   carrito_contar(&c) == 4
+  [OK]   carrito_agregar(&c, p5) == 0
+  [OK]   carrito_contar(&c) == 4
+
+--- 9/9 tests OK ---
