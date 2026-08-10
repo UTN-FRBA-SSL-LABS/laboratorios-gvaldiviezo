@@ -52,7 +52,21 @@ void test_total_con_cantidad(void) {
  *  PARTE C — Escribir un test propio (ver README.md, Parte 7)
  * ═══════════════════════════════════════════════════════════════════════════ */
 
-/* TODO: escribir test_carrito_lleno() */
+void test_carrito_lleno(void) {
+    printf("\n[carrito lleno]\n");
+    Carrito c;
+    carrito_init(&c);
+    Producto p = {"Leche", 350, 1};
+
+
+    ASSERT_IGUAL(1, carrito_agregar(&c, p));
+    ASSERT_IGUAL(1, carrito_agregar(&c, p));
+    ASSERT_IGUAL(1, carrito_agregar(&c, p));
+    ASSERT_IGUAL(1, carrito_agregar(&c, p));
+
+    ASSERT_IGUAL(0, carrito_agregar(&c, p));
+    ASSERT_IGUAL(4, carrito_contar(&c));
+}
 
 /* ═══════════════════════════════════════════════════════════════════════════
  *  main
@@ -64,7 +78,7 @@ int main(void) {
     test_agregar_uno();
     test_total_precio_unitario();
     test_total_con_cantidad();    
-    /* test_carrito_lleno();         */
+    test_carrito_lleno();         
     RESUMEN();
     return EXIT_CODE();
 }
