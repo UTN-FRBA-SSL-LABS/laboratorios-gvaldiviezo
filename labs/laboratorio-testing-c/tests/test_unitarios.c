@@ -110,6 +110,27 @@ void test_buscar_en_carrito_vacio(void) {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
+ *  PARTE EXTRA E2 — Tests unitarios para carrito_total
+ * ═══════════════════════════════════════════════════════════════════════════ */
+
+void test_total_ignora_cantidad_invalida(void) {
+    printf("\n[total: ignora productos con cantidad <= 0]\n");
+    Carrito c;
+    carrito_init(&c);
+
+    Producto valido = {"Pan", 200, 2};        // Subtotal: 400
+    Producto cero   = {"Leche", 350, 0};      // Subtotal: 0 (debe ignorarse)
+    Producto negativo = {"Queso", 500, -1};   // Subtotal: < 0 (debe ignorarse)
+
+    carrito_agregar(&c, valido);
+    carrito_agregar(&c, cero);
+    carrito_agregar(&c, negativo);
+
+    /* El total solo debe calcular el producto valido (400) */
+    ASSERT_IGUAL(400, carrito_total(&c));
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
  *  main
  * ═══════════════════════════════════════════════════════════════════════════ */
 
@@ -122,7 +143,8 @@ int main(void) {
     test_carrito_lleno();   
     test_buscar_producto_existente();
     test_buscar_producto_inexistente(); 
-    test_buscar_en_carrito_vacio();   
+    test_buscar_en_carrito_vacio();  
+    test_total_ignora_cantidad_invalida(); 
     RESUMEN();
     return EXIT_CODE();
 }

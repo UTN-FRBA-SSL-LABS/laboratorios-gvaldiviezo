@@ -428,5 +428,14 @@ Para ver los resultados:
 **E2** — Modificá `carrito_total` para que ignore productos con `cantidad <= 0`. Agregá un test que lo verifique.
 
 **E3** — Deliberadamente escribí un test que falle (ponés un valor incorrecto en `ASSERT_IGUAL`). Corré los tests y observá el mensaje de error. ¿Qué información da el framework? Luego revertí el cambio.
+R=Muestra el mensaje [FAIL], la función evaluada, la diferencia entre el valor esperado y el obtenido, y la línea exacta del archivo donde ocurrió el error. Al final, imprime el resumen de tests pasados y fallados.
+
 
 **E4** — Investigá qué es **TDD** (Test Driven Development). ¿En qué orden se escribe el código? ¿En qué se diferencia de lo que hiciste en este laboratorio?
+R=Es una metodología de desarrollo donde los tests automatizados se escriben antes que el código de producción, guiando el diseño de la aplicación.
+Orden:
+1. Se escribe un test unitario para la nueva función y se verifica que falle (porque aún no existe la solución).
+2. Se escribe la menor cantidad de código fuente posible para lograr que el test pase.
+3. Se optimiza y limpia el código manteniendo los tests en verde.
+
+Diferencia con el laboratorio: En el laboratorio, el código ya estaba escrito y probamos para hallar errores. En TDD, las pruebas se escribe e implementan primero para definir el comportamiento esperado desde el inicio.

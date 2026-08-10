@@ -21,7 +21,9 @@ int carrito_contar(Carrito *c) {
 int carrito_total(Carrito *c) {
     int total = 0;
     for (int i = 0; i < c->cantidad; i++) {
-        total += c->items[i].precio * c->items[i].cantidad;
+        if (c->items[i].cantidad > 0) {
+            total += c->items[i].precio * c->items[i].cantidad;
+        }
     }
     return total;
 }
