@@ -69,6 +69,47 @@ void test_carrito_lleno(void) {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
+ *  PARTE EXTRA E1 — Tests unitarios para carrito_buscar
+ * ═══════════════════════════════════════════════════════════════════════════ */
+
+
+void test_buscar_producto_existente(void) {
+    printf("\n[buscar: producto que existe en el carrito]\n");
+    Carrito c;
+    carrito_init(&c);
+
+    Producto p1 = {"Azucar", 200, 1};
+    Producto p2 = {"Sal", 350, 2};
+
+    carrito_agregar(&c, p1);
+    carrito_agregar(&c, p2);
+
+    ASSERT_IGUAL(0, carrito_buscar(&c, "Azucar"));
+    ASSERT_IGUAL(1, carrito_buscar(&c, "Sal"));
+}
+
+void test_buscar_producto_inexistente(void) {
+    printf("\n[buscar: producto que NO existe]\n");
+    Carrito c;
+    carrito_init(&c);
+
+    Producto p = {"Azucar", 200, 1};
+    carrito_agregar(&c, p);
+
+    /* "Queso" no fue agregado, debe devolver -1 */
+    ASSERT_IGUAL(-1, carrito_buscar(&c, "Queso"));
+}
+
+void test_buscar_en_carrito_vacio(void) {
+    printf("\n[buscar: carrito vacio]\n");
+    Carrito c;
+    carrito_init(&c);
+
+    /* Buscar cualquier producto en carrito recién inicializado debe devolver -1 */
+    ASSERT_IGUAL(-1, carrito_buscar(&c, "Azucar"));
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
  *  main
  * ═══════════════════════════════════════════════════════════════════════════ */
 
@@ -78,7 +119,10 @@ int main(void) {
     test_agregar_uno();
     test_total_precio_unitario();
     test_total_con_cantidad();    
-    test_carrito_lleno();         
+    test_carrito_lleno();   
+    test_buscar_producto_existente();
+    test_buscar_producto_inexistente(); 
+    test_buscar_en_carrito_vacio();   
     RESUMEN();
     return EXIT_CODE();
 }

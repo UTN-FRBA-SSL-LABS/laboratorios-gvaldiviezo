@@ -29,3 +29,12 @@ int carrito_total(Carrito *c) {
 int carrito_descuento(int total, int porcentaje) {
     return total - (total * porcentaje / 100);
 }
+
+int carrito_buscar(Carrito *c, const char *nombre) {
+    for (int i = 0; i < c->cantidad; i++) {
+        if (strcmp(c->items[i].nombre, nombre) == 0) {
+            return i;
+        }
+    }
+    return -1;
+}
