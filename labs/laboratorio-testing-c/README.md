@@ -338,10 +338,10 @@ Las líneas con `#####` nunca se ejecutaron — no están cubiertas por los test
 
 **P10** — ¿Hay alguna línea de `carrito.c` con `#####`? ¿Cuál y por qué no se ejecutó?
 
-> R:
+> R:no hay ninguna línea con #####.
 
 ```
-COBERTURA_COMPLETA=
+COBERTURA_COMPLETA=si
 ```
 _(SI si todas las líneas están cubiertas, NO si hay alguna con #####)_
 
@@ -351,27 +351,27 @@ _(SI si todas las líneas están cubiertas, NO si hay alguna con #####)_
 
 **P11** — ¿Qué diferencia hay entre un test unitario y uno de integración? ¿Cuál de los dos detectó primero el bug de `carrito_total`?
 
-> R:
+> R:Un test unitario aísla y verifica de forma individual e independiente, mientras que un test de integración evalúa el comportamiento combinado de varios módulos trabajando juntos.
 
 **P12** — El bug de capacidad en `carrito_agregar` causa un **buffer overflow**: se escribe más allá del array. ¿Por qué esto es peligroso en C pero no ocurriría en un lenguaje como Python o Java?
 
-> R:
+> R:no realiza verificación de límites  en tiempo de ejecución, por lo que permite escribir en memoria no reservada,generando fallos.
 
 **P13** — En este laboratorio encontraste los bugs escribiendo tests. ¿Qué tiene de mejor este enfoque frente a mirar el código directamente?
 
-> R:
+> R:Los tests permiten detectar y reproducir errores de forma automatizada y objetiva sin depender de la inspección visual humana.
 
 **P14** — El test `test_total_precio_unitario` (cantidad = 1) **pasó** a pesar del bug, mientras que `test_total_con_cantidad` (cantidad = 2) **falló**. ¿Por qué el primer test no detectó el bug?
 
-> R:
+> R:Porque con cantidad = 1, matemáticamente $precio \times 1 = precio$. La suma simple daba exactamente el mismo resultado que multiplicar por la cantidad, por lo que el caso de prueba no ponía a prueba la lógica de multiplicación.
 
 ```
-BUG_EN_FUNCION_1=
+BUG_EN_FUNCION_1=carrito_total
 ```
 _(nombre de la función con el primer bug)_
 
 ```
-BUG_EN_FUNCION_2=
+BUG_EN_FUNCION_2=carrito_agregar
 ```
 _(nombre de la función con el segundo bug)_
 
