@@ -210,11 +210,11 @@ El test anterior encontró un bug en `carrito_total`. Abrí `src/carrito.c` y bu
 
 **P6** — ¿En qué línea está el bug y qué dice ese código?
 
-> R:
+> R:linea 24. El bug está en la función carrito_total, donde el código dice: total += c->items[i].precio; (Suma solo el precio unitario y ignora la cantidad).
 
 **P7** — ¿Qué debería hacer esa línea para calcular el total correctamente?
 
-> R:
+> R:La línea debería multiplicar el precio unitario del producto por su cantidad antes de sumarlo al acumulador total
 
 Corregí el bug. Luego volvé a compilar y correr:
 
@@ -232,7 +232,7 @@ cat salidas/test_unitarios.txt
 ```
 
 ```
-TESTS_UNITARIOS_PASAN=
+TESTS_UNITARIOS_PASAN=si
 ```
 _(escribí SI si todos los tests pasan ahora)_
 
