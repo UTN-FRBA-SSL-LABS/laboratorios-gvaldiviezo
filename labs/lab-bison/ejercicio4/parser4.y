@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 int  yylex(void);
-void yyerror(const char *msg) { fprintf(stderr, "Error: %s\n", msg); }
+void yyerror(const char *msg) { }
 %}
 
 %token NUM
