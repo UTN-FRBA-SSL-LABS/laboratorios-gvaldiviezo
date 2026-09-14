@@ -25,7 +25,7 @@ $(PROGRAMA): $(OBJS)
 	$(CC) $^ -o $(PROGRAMA)
 
 %.o : %.c
-    $(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # TODO 4: Escribí la regla de patrón para compilar cada .c en su .o
 #         Formato: %.o : %.c
