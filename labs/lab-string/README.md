@@ -367,7 +367,7 @@ El `while` termina cuando alguna de las dos cadenas llega a `'\0'`. Después dev
 
 **P4** — ¿Qué dos casos están mal cubiertos por `return 1`? Describí un ejemplo para cada uno.
 
-> R:
+> R:Cuando una palabra empieza igual que la otra pero es más corta ("hola" y "hola mundo"). Al revés, cuando la segunda palabra es más corta ("casa" y "cas"). En ambos casos devolvía 1 (iguales) por error.
 
 #### Corrección
 
