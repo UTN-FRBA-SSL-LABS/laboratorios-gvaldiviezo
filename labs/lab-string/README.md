@@ -414,7 +414,7 @@ int AreDecimalDigits(const char *s) {
 
 **P5** — ¿Por qué la cadena vacía no debería considerarse un conjunto de dígitos decimales? Pensalo desde la especificación matemática.
 
-> R:
+> R:Porque para tener dígitos decimales necesitás al menos un carácter numérico. Si la cadena está vacía no hay ningún dígito, por lo que la especificación define directamente que debe dar 0.
 
 #### Corrección
 
