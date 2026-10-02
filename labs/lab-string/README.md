@@ -277,7 +277,7 @@ Los tests de `IsEmpty` ya están activos en `StringTest.c`. Corré `make test` y
 
 **P1** — `IsEmpty` podría haberse escrito también como `return s[0] == '\0'`. ¿Son equivalentes? ¿Por qué?
 
-> R:
+> R:si,escribir s[0] es exactamente igual que escribir *s, ambas acceden al primer elemento del arreglo.
 
 ---
 
@@ -328,11 +328,11 @@ make test
 
 **P2** — ¿Qué hace `s + 1`? ¿Por qué avanza al siguiente carácter y no al siguiente byte?
 
-> R:
+> R:Al sumar 1 a un puntero, C avanza al siguiente elemento. Como cada char ocupa justo 1 byte en memoria, avanzar un elemento coincide con avanzar un byte.
 
 **P3** — Si llamaras a `GetLength(NULL)`, ¿qué pasaría? ¿Por qué las precondiciones del contrato dicen `s != NULL`?
 
-> R:
+> R:El programa tira un Segmentation fault al intentar leer memoria inválida. Se pide s != NULL para asumir que la dirección siempre sea válida.
 
 ```
 GETLENGTH_PASA=
