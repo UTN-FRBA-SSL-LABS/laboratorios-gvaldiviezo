@@ -662,15 +662,15 @@ _(SI o NO)_
 
 **P10** — `GetLength` es recursiva pero en C una llamada recursiva consume un stack frame. Si llamaras `GetLength` con un string de 1.000.000 de caracteres, ¿qué pasaría? ¿Cómo lo resolverías?
 
-> R:
+> R:Provocaría un desbordamiento de pila, colapsando el programa porque cada llamada añade un stack frame hasta agotar la memoria asignada al stack del hilo. Se resuelve reemplazando la recursión por un enfoque iterativo con un ciclo while o for que avance el puntero hasta encontrar \0, consumiendo $O(1)$ de memoria adicional en el stack.
 
 **P11** — En la Parte III, todos los programas usan `char **arg` para iterar en vez de un índice entero. ¿Qué ventaja tiene este estilo? ¿Cuándo sería preferible usar el índice?
 
-> R:
+> R:La ventaja de char **arg es que resulta más idiomático en C al apoyarse en el puntero centinela final (argv[argc] == NULL), evitando mantener dos variables (índice y puntero) y permitiendo avanzar directamente la dirección de memoria. Es preferible usar un índice entero i cuando se requiere acceso aleatorio ($O(1)$ a posiciones arbitrarias), cuando importa conocer el número ordinal del argumento, o cuando se deben recorrer arreglos en reversa o con saltos variables.
 
 **P12** — En C, `"hola"` es un literal de tipo `const char *`. Si intentaras modificar un carácter con `s[0] = 'H'`, el comportamiento es indefinido. ¿Por qué? ¿En qué parte de la memoria viven los literales?
 
-> R:
+> R:Los literales de cadena residen en el segmento de memoria de solo lectura del binario. El sistema operativo y la MMU protegen estas páginas contra escritura; intentar modificar un byte allí genera un fallo de protección de página en tiempo de ejecución, lo que el estándar clasifica como comportamiento indefinido.
 
 ---
 
