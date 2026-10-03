@@ -467,7 +467,7 @@ Antes de implementar, discutí con tu equipo:
 
 **P6** — Conclusión de la discusión:
 
-> R:
+> R:Es correcto separarlas. String solo debe encargarse de manipular e inspeccionar cadenas en sí, mientras que Conversion se ocupa de transformar un tipo de dato a otro (por ejemplo de String a int). Separarlo respeta el principio de responsabilidad única.
 
 ---
 
@@ -494,7 +494,7 @@ int ToInteger(const char *s) {
 
 **P7** — El loop acumula correctamente el valor en `resultado`. ¿Qué está mal en el `return`?
 
-> R:
+> R:Devuelve únicamente signo (siempre 1 o -1), descartando por completo el número parseado en resultado.
 
 #### Corrección
 
@@ -506,7 +506,7 @@ make test
 
 **P8** — La expresión `*s - '0'` convierte un carácter dígito al entero correspondiente. ¿Por qué funciona? ¿Qué devuelve `'3' - '0'`?
 
-> R:
+> R:En la tabla ASCII los números del 0 al 9 son consecutivos. Al restar el valor de 0, se obtiene el entero exacto. 3 - 0 equivale a 51 - 48 = 3.
 
 ```
 TOINTEGER_PASA=
